@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "nat-food"
+  },
+  "targets": {
+    "nat-food": {
+      "hosting": {
+        "nat-foods": [
+          "nat-food"
+        ]
+      }
+    }
+  }
+}

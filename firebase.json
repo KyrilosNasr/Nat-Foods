@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/nat-foods",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
