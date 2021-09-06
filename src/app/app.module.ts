@@ -18,6 +18,10 @@ import { AdminProductsComponent } from './Components/admin/admin-products/admin-
 import { AdminOrdersComponent } from './Components/admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './Components/auth/login/login.component';
 import { RegisterComponent } from './Components/auth/register/register.component';
+import { AuthService } from './services/auth.service';
+import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
+import { UserService } from './services/user.service';
+import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent, HomeComponent, ProductsComponent, ShoppingCartComponent, CheckOutComponent, OrderSuccessComponent, MyOrdersComponent, AdminProductsComponent, AdminOrdersComponent, LoginComponent, RegisterComponent],
@@ -28,7 +32,8 @@ import { RegisterComponent } from './Components/auth/register/register.component
     AngularFireDatabaseModule,
     AngularFireAuthModule,
   ],
-  providers: [],
+  providers: [AuthService, AuthGuard, UserService,
+  AdminAuthGuardService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
