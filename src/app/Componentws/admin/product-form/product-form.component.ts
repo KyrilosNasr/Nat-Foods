@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../../services/category.service';
-import { switchMap } from 'rxjs/operators';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-product-form',
@@ -12,13 +11,12 @@ export class ProductFormComponent implements OnInit {
   categories$;
   constructor(categoryService: CategoryService) {
     this.categories$ = categoryService.getCategories()
-
   }
+
   ngOnInit() {
   }
 
   save(product) {
-    console.log(product);
-
+    console.log(product)
   }
 }

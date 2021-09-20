@@ -12,14 +12,12 @@
     </div>
     <div class="form-group">
         <label for="category"> Category</label>
-        <ng-container *ngIf="categories$ | async as categoryList">
-            <select ngModel name="category" id="category" type="number" class="form-control">
+          <select ngModel name="category" id="category" type="number" class="form-control">
                 <option value=""></option>
-                <option *ngFor="let category of categoryList" [value]="category.$key">
-                    {{ category.name }}
+                <option *ngFor="let category of categories$ | async" [value]="category.key">
+                    {{ category.payload.val().name }}
                 </option>
             </select>
-        </ng-container>
 
     </div>
     <div class="form-group">

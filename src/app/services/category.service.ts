@@ -1,5 +1,4 @@
-import { query } from '@angular/animations';
-import { Injectable } from '@angular/core';
+import { Injectable,  } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -9,12 +8,9 @@ import { Observable } from 'rxjs';
 })
 export class CategoryService {
 
-  categories;
   constructor(private db: AngularFireDatabase) { }
 
   getCategories() {
-    return this.db.list('/Categories/', cat => {
-      return cat.orderByChild('name').ref
-    }).valueChanges();
-  }
+    return this.db.list('/Categories/', cat => cat.orderByChild('name') ).snapshotChanges()
+}
 }
