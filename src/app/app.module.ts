@@ -3,10 +3,13 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from './../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CustomFormsModule } from 'ng2-validation'
+
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { HomeComponent } from './Components/home/home.component';
 import { ProductsComponent } from './Components/products/products.component';
@@ -22,21 +25,37 @@ import { AuthService } from './services/auth.service';
 import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 import { UserService } from './services/user.service';
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
-import { ProductFormComponent } from './Componentws/admin/product-form/product-form.component';
+import { ProductFormComponent } from './Components/admin/product-form/product-form.component';
 import { FormsModule } from '@angular/forms';
+import { ProductService } from './services/product.service';
+import { AgGridModule } from 'ag-grid-angular';
+import { TableModule } from 'primeng/table';
+import { ProductFilteredComponent } from './Components/products/Product-Filtered/Product-Filtered.component';
+import { ProductCardComponent } from './Components/products/Product-Card/Product-Card.component';
+import { ShoppingCartService } from './services/shopping-cart.service';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, HomeComponent, ProductsComponent, ShoppingCartComponent, CheckOutComponent, OrderSuccessComponent, MyOrdersComponent, AdminProductsComponent, AdminOrdersComponent, LoginComponent, RegisterComponent, ProductFormComponent],
+  declarations: [AppComponent, NavbarComponent, HomeComponent, ProductsComponent,
+     ShoppingCartComponent, CheckOutComponent, OrderSuccessComponent, 
+     MyOrdersComponent, AdminProductsComponent, AdminOrdersComponent,
+      LoginComponent, RegisterComponent, ProductFormComponent,
+       ProductFilteredComponent,
+       ProductCardComponent],
+
   imports: [
+    CustomFormsModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
+    TableModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    AgGridModule.forRoot(),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
   ],
-  providers: [AuthService, AuthGuard, UserService,
-  AdminAuthGuardService],
+  providers: [AuthService, AuthGuard, UserService,ProductService,
+  AdminAuthGuardService,ShoppingCartService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
